@@ -4,7 +4,7 @@ python:
   - "3.2"
 install:
   - python -c 'import docutils; print(docutils.__version__)' || true
-  - python -c 'import jinja2; print(jinja2.__version__)' || || true
+  - python -c 'import jinja2; print(jinja2.__version__)' || true
   - python -c 'import pygments; print(pygments.__version__)' || true
   - ls -Al
   - python setup.py install
