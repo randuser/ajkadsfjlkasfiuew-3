@@ -11,7 +11,7 @@ install:
   - echo '# jinja2 does not get updated by 2to3 when installing under'
   - echo '# Python 3.x via setup.py. Fixed by forced reinstall.'
   - pip -v install --use-mirrors --force-reinstall jinja2
-  - # need simplejson for python<=2.5 
+  - echo '# need simplejson for python<=2.5'
   - python -c 'import sys; sys.version_info[:2] <= (2, 5) or sys.exit(1)' || pip install --use-mirrors simplejson
 
 script:
