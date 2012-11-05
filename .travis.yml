@@ -8,7 +8,7 @@ install:
   - ls -Al
   - python -c 'import docutils; print(docutils.__version__)' || true
   - python -c 'import pygments; print(pygments.__version__)' || true
-  - python -c 'import jinja2; print(jinja2.__version__) || true
+  - python -c 'import jinja2; print(jinja2.__version__)' || true
   - # jinja2 does not get updated by 2to3 when installing under 
   - # Python 3.x via setup.py. Fixed by forced reinstall.
   - pip -v install --use-mirrors --force-reinstall jinja2
