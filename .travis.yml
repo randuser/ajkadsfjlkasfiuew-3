@@ -2,7 +2,7 @@ language: python
 python:
   - "2.5"
 install:
-  - python -c 'import sys; sys.exit(sys.version_info[:2] <= (2, 5))' && pip install -v --use-mirrors simplejson
+  - python -c 'import sys; sys.exit(sys.version_info[:2] <= (2, 5))' || pip install -v --use-mirrors simplejson
   - pip install --use-mirrors .
   - echo '# package versions'
   - python -c 'import docutils; print(docutils.__version__)'
