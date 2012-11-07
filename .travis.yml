@@ -1,7 +1,6 @@
 language: python
 python:
   - "2.5"
-  - "2.6"
 install:
   - python -c 'import sys; sys.exit(sys.version_info[:2] <= (2, 5))' && pip install -v --use-mirrors simplejson
   - pip install --use-mirrors .
