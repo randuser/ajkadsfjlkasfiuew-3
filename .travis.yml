@@ -1,19 +1,31 @@
 language: python
 python:
-  - "2.5"
+  - "2.7"
+  - "3.2"
+env:
+  - DEP_DOCUTILS="docutils>=0.7"
+  - DEP_DOCUTILS="svn+http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils"
+
 install:
   - python -c 'import sys; sys.exit(sys.version_info[:2] <= (2, 5))' || pip install -v --use-mirrors simplejson
+  - pip install --use-mirrors "$DEP_DOCUTILS"
   - pip install --use-mirrors .
+
+script:
   - echo '# package versions'
   - python -c 'import docutils; print(docutils.__version__)'
   - python -c 'import pygments; print(pygments.__version__)'
   - python -c 'import jinja2; print(jinja2.__version__)'
-
-script:
+  - python -c 'import sphinx'
   - echo '# building sphinx/doc'
-  - ( cd doc && sphinx-build -b html . _build | cat ) || true
+  - ( cd doc && sphinx-build -b html . _build | cat )
   - echo '# building sphinx/doc [done]'
   - echo
   - echo '# running sphinx/tests'
   - make test TEST=' -v '
   - echo '# running sphinx/tests [done]'
+
+matrix:
+  exclude:
+    - python: "3.2"
+      env: DEP_DOCUTILS="docutils>=0.7"
