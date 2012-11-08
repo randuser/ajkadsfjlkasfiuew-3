@@ -1,7 +1,7 @@
 language: python
 python:
-  - "2.7"
   - "3.2"
+  - "2.7"
 env:
   - DEP_DOCUTILS="docutils>=0.7"
   - DEP_DOCUTILS="svn+http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils"
