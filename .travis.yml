@@ -3,13 +3,13 @@ python:
   - "3.2"
   - "2.7"
 env:
-  - DEP_DOCUTILS="docutils>=0.7"
-  - DEP_DOCUTILS="svn+http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils"
+  - DEP_DOCUTILS='docutils>=0.7'
+  - DEP_DOCUTILS='http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/docutils/?view=tar'
 
 install:
   - python -c 'import sys; sys.exit(sys.version_info[:2] <= (2, 5))' || pip install -v --use-mirrors simplejson
-  - pip install --use-mirrors "$DEP_DOCUTILS"
-  - pip install --use-mirrors .
+  - pip install -v --use-mirrors "$DEP_DOCUTILS"
+  - pip install -v --use-mirrors .
 
 script:
   - echo '# package versions'
@@ -28,4 +28,4 @@ script:
 matrix:
   exclude:
     - python: "3.2"
-      env: DEP_DOCUTILS="docutils>=0.7"
+      env: DEP_DOCUTILS='docutils>=0.7'
