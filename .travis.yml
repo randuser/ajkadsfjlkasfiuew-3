@@ -1,24 +1,23 @@
 language: python
 python:
-  - "3.2"
   - "2.7"
+  - "3.2"
 env:
   - DEP_DOCUTILS='docutils>=0.7'
-  - DEP_DOCUTILS='http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/docutils/?view=tar'
+  - DEP_DOCUTILS='svn+http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils'
 
 install:
-  - python -c 'import sys; sys.exit(sys.version_info[:2] <= (2, 5))' || pip install -v --use-mirrors simplejson
   - pip install -v --use-mirrors "$DEP_DOCUTILS"
   - pip install -v --use-mirrors .
 
 script:
   - echo '# package versions'
   - python -c 'import docutils; print(docutils.__version__)'
-  - python -c 'import pygments; print(pygments.__version__)'
   - python -c 'import jinja2; print(jinja2.__version__)'
-  - python -c 'import sphinx'
+  - python -c 'import pygments; print(pygments.__version__)'
+  - python -c 'import sphinx; print(sphinx.__version__)'
   - echo '# building sphinx/doc'
-  - ( cd doc && sphinx-build -b html . _build | cat )
+  - ( cd doc && sphinx-build -W -b html . _build/html | cat )
   - echo '# building sphinx/doc [done]'
   - echo
   - echo '# running sphinx/tests'
